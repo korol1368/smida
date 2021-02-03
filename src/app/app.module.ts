@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HistoryComponent } from './history/history.component';
+import {HistoryService} from "./services/history.service";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { HistoryComponent } from './history/history.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [HistoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
