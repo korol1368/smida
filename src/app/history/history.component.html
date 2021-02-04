@@ -56,7 +56,14 @@
       </ng-container>
 
       <ng-container matColumnDef="reportFormat">
-        <th mat-header-cell *matHeaderCellDef>Тип файлу</th>
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field appearance="fill">
+            <mat-label>Тип файлу</mat-label>
+            <mat-select [formControl]="reportFormat" multiple>
+              <mat-option *ngFor="let item of reportFormats" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </th>
         <td mat-cell *matCellDef="let row">{{row.reportFormat}}</td>
       </ng-container>
 

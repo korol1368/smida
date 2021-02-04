@@ -16,10 +16,12 @@ export class HistoryComponent implements AfterViewInit {
   termType = new FormControl('');
   reportGroup = new FormControl('');
   reportState = new FormControl('');
+  reportFormat = new FormControl('');
   termTypes: string[] = [];
   publicationTypes: string[] = [];
   reportGroups: string[] = [];
   reportStates: string[] = [];
+  reportFormats: string[] = [];
   displayedColumns: string[] = [
     'publicationType',
     'termType',
@@ -51,6 +53,7 @@ export class HistoryComponent implements AfterViewInit {
           this.termTypes = [...new Set(data.map(item => item.termType))];
           this.reportGroups = [...new Set(data.map(item => item.reportGroup))];
           this.reportStates = [...new Set(data.map(item => item.reportState))];
+          this.reportFormats = [...new Set(data.map(item => item.reportFormat))];
 
           return data;
         }),
