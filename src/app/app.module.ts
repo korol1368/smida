@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HistoryComponent } from './history/history.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HistoryComponent} from './history/history.component';
 import {HistoryService} from "./services/history.service";
 
 @NgModule({
@@ -18,4 +18,5 @@ import {HistoryService} from "./services/history.service";
   providers: [HistoryService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
