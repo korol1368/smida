@@ -20,7 +20,14 @@
       </ng-container>
 
       <ng-container matColumnDef="termType">
-        <th mat-header-cell *matHeaderCellDef>Періодичність</th>
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field appearance="fill">
+            <mat-label>Періодичність</mat-label>
+            <mat-select [formControl]="termType" multiple>
+              <mat-option *ngFor="let item of termTypes" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </th>
         <td mat-cell *matCellDef="let row">{{row.termType}}</td>
       </ng-container>
 
