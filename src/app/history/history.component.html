@@ -86,7 +86,11 @@
       </ng-container>
 
       <ng-container matColumnDef="outputNumber">
-        <th mat-header-cell *matHeaderCellDef>Вихідний номер документу</th>
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field class="example-ripple-form-field">
+            <input matInput [formControl]="outputNumber" type="text" placeholder="Вихідний номер документу">
+          </mat-form-field>
+        </th>
         <td mat-cell *matCellDef="let row">{{row.outputNumber}}</td>
       </ng-container>
 

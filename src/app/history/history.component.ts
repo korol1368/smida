@@ -17,6 +17,7 @@ export class HistoryComponent implements AfterViewInit {
   reportGroup = new FormControl('');
   reportState = new FormControl('');
   reportFormat = new FormControl('');
+  outputNumber = new FormControl('');
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
