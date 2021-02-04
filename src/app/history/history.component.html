@@ -9,7 +9,7 @@
 
       <ng-container matColumnDef="publicationType">
         <th mat-header-cell *matHeaderCellDef>
-          <mat-form-field appearance="fill">
+          <mat-form-field>
             <mat-label>Тип публікації</mat-label>
             <mat-select [formControl]="publicationType" multiple>
               <mat-option *ngFor="let item of publicationTypes" [value]="item">{{item}}</mat-option>
@@ -21,7 +21,7 @@
 
       <ng-container matColumnDef="termType">
         <th mat-header-cell *matHeaderCellDef>
-          <mat-form-field appearance="fill">
+          <mat-form-field>
             <mat-label>Періодичність</mat-label>
             <mat-select [formControl]="termType" multiple>
               <mat-option *ngFor="let item of termTypes" [value]="item">{{item}}</mat-option>
@@ -33,7 +33,7 @@
 
       <ng-container matColumnDef="reportGroup">
         <th mat-header-cell *matHeaderCellDef>
-          <mat-form-field appearance="fill">
+          <mat-form-field>
             <mat-label>Категорія суб'єкта</mat-label>
             <mat-select [formControl]="reportGroup" multiple>
               <mat-option *ngFor="let item of reportGroups" [value]="item">{{item}}</mat-option>
@@ -45,7 +45,7 @@
 
       <ng-container matColumnDef="reportState">
         <th mat-header-cell *matHeaderCellDef>
-          <mat-form-field appearance="fill">
+          <mat-form-field>
             <mat-label>Статус</mat-label>
             <mat-select [formControl]="reportState" multiple>
               <mat-option *ngFor="let item of reportStates" [value]="item">{{item}}</mat-option>
@@ -57,7 +57,7 @@
 
       <ng-container matColumnDef="reportFormat">
         <th mat-header-cell *matHeaderCellDef>
-          <mat-form-field appearance="fill">
+          <mat-form-field>
             <mat-label>Тип файлу</mat-label>
             <mat-select [formControl]="reportFormat" multiple>
               <mat-option *ngFor="let item of reportFormats" [value]="item">{{item}}</mat-option>
@@ -68,7 +68,20 @@
       </ng-container>
 
       <ng-container matColumnDef="outputDate">
-        <th mat-header-cell *matHeaderCellDef>Вихідна дата документу</th>
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <mat-label>Вихідна дата документу</mat-label>
+            <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+              <input matStartDate formControlName="start" placeholder="Start date">
+              <input matEndDate formControlName="end" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+
+            <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+            <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+          </mat-form-field>
+        </th>
         <td mat-cell *matCellDef="let row">{{row.outputDate.date | date}}</td>
       </ng-container>
 

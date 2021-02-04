@@ -4,7 +4,7 @@ import {merge, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {HistoryModel} from '../models/history.model';
 import {HistoryService} from '../services/history.service';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-history',
@@ -17,6 +17,10 @@ export class HistoryComponent implements AfterViewInit {
   reportGroup = new FormControl('');
   reportState = new FormControl('');
   reportFormat = new FormControl('');
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
   termTypes: string[] = [];
   publicationTypes: string[] = [];
   reportGroups: string[] = [];
