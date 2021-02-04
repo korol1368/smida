@@ -8,7 +8,14 @@
     <table mat-table [dataSource]="data" class="example-table">
 
       <ng-container matColumnDef="publicationType">
-        <th mat-header-cell *matHeaderCellDef>Тип публікації</th>
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field appearance="fill">
+            <mat-label>Тип публікації</mat-label>
+            <mat-select [formControl]="publicationType" multiple>
+              <mat-option *ngFor="let item of publicationTypes" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </th>
         <td mat-cell *matCellDef="let row">{{row.publicationType}}</td>
       </ng-container>
 
