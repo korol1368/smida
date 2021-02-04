@@ -14,8 +14,10 @@ import {FormControl} from '@angular/forms';
 export class HistoryComponent implements AfterViewInit {
   publicationType = new FormControl('');
   termType = new FormControl('');
+  reportGroup = new FormControl('');
   termTypes: string[] = [];
   publicationTypes: string[] = [];
+  reportGroups: string[] = [];
   displayedColumns: string[] = [
     'publicationType',
     'termType',
@@ -45,6 +47,7 @@ export class HistoryComponent implements AfterViewInit {
           this.resultsLength = data.length;
           this.publicationTypes = [...new Set(data.map(item => item.publicationType))];
           this.termTypes = [...new Set(data.map(item => item.termType))];
+          this.reportGroups = [...new Set(data.map(item => item.reportGroup))];
 
           return data;
         }),
