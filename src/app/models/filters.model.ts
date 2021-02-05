@@ -1,9 +1,9 @@
-export interface FiltersModel {
-  publicationType?: string[];
-  termType?: string[];
-  reportGroup?: string[];
-  reportState?: string[];
-  reportFormat?: string[];
+export interface Filters {
+  publicationTypes?: string[];
+  termTypes?: string[];
+  reportGroups?: string[];
+  reportStates?: string[];
+  reportFormats?: string[];
   outputNumber?: string;
   outputDate?: {
     start: string;

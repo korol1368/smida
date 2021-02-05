@@ -11,7 +11,7 @@
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field>
             <mat-label>Тип публікації</mat-label>
-            <mat-select formControlName="publicationType" multiple>
+            <mat-select formControlName="publicationTypes" multiple>
               <mat-option *ngFor="let item of publicationTypes" [value]="item">{{item}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -23,7 +23,7 @@
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field>
             <mat-label>Періодичність</mat-label>
-            <mat-select formControlName="termType" multiple>
+            <mat-select formControlName="termTypes" multiple>
               <mat-option *ngFor="let item of termTypes" [value]="item">{{item}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -35,7 +35,7 @@
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field>
             <mat-label>Категорія суб'єкта</mat-label>
-            <mat-select formControlName="reportGroup" multiple>
+            <mat-select formControlName="reportGroups" multiple>
               <mat-option *ngFor="let item of reportGroups" [value]="item">{{item}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -47,7 +47,7 @@
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field>
             <mat-label>Статус</mat-label>
-            <mat-select formControlName="reportState" multiple>
+            <mat-select formControlName="reportStates" multiple>
               <mat-option *ngFor="let item of reportStates" [value]="item">{{item}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -59,7 +59,7 @@
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field>
             <mat-label>Тип файлу</mat-label>
-            <mat-select formControlName="reportFormat" multiple>
+            <mat-select formControlName="reportFormats" multiple>
               <mat-option *ngFor="let item of reportFormats" [value]="item">{{item}}</mat-option>
             </mat-select>
           </mat-form-field>

@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Component, AfterViewInit} from '@angular/core';
 import {merge, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import {HistoryModel} from '../models/history.model';
+import {History} from '../models/history.model';
 import {HistoryService} from '../services/history.service';
 import {FormControl, FormGroup} from '@angular/forms';
 
@@ -13,12 +13,12 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class HistoryComponent implements AfterViewInit {
   form = new FormGroup({
-    publicationType: new FormControl(''),
-    termType: new FormControl(''),
-    reportGroup: new FormControl(''),
-    reportState: new FormControl(''),
-    reportFormat: new FormControl(''),
-    outputNumber: new FormControl(''),
+    publicationTypes: new FormControl(),
+    termTypes: new FormControl(),
+    reportGroups: new FormControl(),
+    reportStates: new FormControl(),
+    reportFormats: new FormControl(),
+    outputNumber: new FormControl(),
     outputDate: new FormGroup({
       start: new FormControl(),
       end: new FormControl()
@@ -40,7 +40,7 @@ export class HistoryComponent implements AfterViewInit {
     'outputNumber',
     'actions'
   ];
-  data: HistoryModel[] = [];
+  data: History[] = [];
   resultsLength = 0;
   isLoadingResults = true;
 
@@ -73,7 +73,7 @@ export class HistoryComponent implements AfterViewInit {
         })
       ).subscribe((data) => {
       this.data = data;
-    })
+    });
   }
 
   onClickResetFilters(): void {

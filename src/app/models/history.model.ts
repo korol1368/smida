@@ -1,4 +1,4 @@
-export interface HistoryModel {
+export interface History {
   idReport: number;
   idSubject: number;
   reportState: string;
