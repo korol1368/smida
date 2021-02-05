@@ -19,7 +19,7 @@ export class HistoryComponent implements AfterViewInit {
     reportState: new FormControl(''),
     reportFormat: new FormControl(''),
     outputNumber: new FormControl(''),
-    range: new FormGroup({
+    outputDate: new FormGroup({
       start: new FormControl(),
       end: new FormControl()
     })
@@ -37,7 +37,7 @@ export class HistoryComponent implements AfterViewInit {
     'reportState',
     'reportFormat',
     'outputDate',
-    'outputNumber'
+    'outputNumber',
   ];
   data: HistoryModel[] = [];
   resultsLength = 0;
@@ -52,7 +52,8 @@ export class HistoryComponent implements AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.historyService.getList();
+          const filters = this.form.value;
+          return this.historyService.getList(filters);
         }),
         map(data => {
           this.isLoadingResults = false;
