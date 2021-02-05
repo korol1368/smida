@@ -38,6 +38,7 @@ export class HistoryComponent implements AfterViewInit {
     'reportFormat',
     'outputDate',
     'outputNumber',
+    'actions'
   ];
   data: HistoryModel[] = [];
   resultsLength = 0;
