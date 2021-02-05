@@ -12,16 +12,19 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements AfterViewInit {
-  publicationType = new FormControl('');
-  termType = new FormControl('');
-  reportGroup = new FormControl('');
-  reportState = new FormControl('');
-  reportFormat = new FormControl('');
-  outputNumber = new FormControl('');
-  range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl()
+  form = new FormGroup({
+    publicationType: new FormControl(''),
+    termType: new FormControl(''),
+    reportGroup: new FormControl(''),
+    reportState: new FormControl(''),
+    reportFormat: new FormControl(''),
+    outputNumber: new FormControl(''),
+    range: new FormGroup({
+      start: new FormControl(),
+      end: new FormControl()
+    })
   });
+
   termTypes: string[] = [];
   publicationTypes: string[] = [];
   reportGroups: string[] = [];
@@ -44,7 +47,7 @@ export class HistoryComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    merge()
+    merge(this.form.valueChanges)
       .pipe(
         startWith({}),
         switchMap(() => {
