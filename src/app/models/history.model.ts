@@ -10,13 +10,13 @@ export interface History {
     date: string;
     timezone_type: number;
     timezone: string;
-  },
+  };
   bSentToNSSMC: boolean;
   bDisclosure: boolean;
   dateFill: {
     date: string;
     timezone_type: number;
     timezone: string;
-  },
+  };
   reportFormat: string;
 }

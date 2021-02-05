@@ -47,7 +47,7 @@ export class HistoryComponent implements AfterViewInit {
   constructor(private http: HttpClient, private historyService: HistoryService) {
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     merge(this.form.valueChanges)
       .pipe(
         startWith({}),
