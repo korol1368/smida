@@ -99,7 +99,8 @@
         </th>
 
         <td mat-cell *matCellDef="let row">
-          <button mat-icon-button color="warn">
+          <button mat-icon-button color="warn"
+                  (click)="onClickDelete(row.idReport)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>

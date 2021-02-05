@@ -43,4 +43,8 @@ export class HistoryService {
 
     return this.http.get<HistoryModel[]>(environment.apiUrl, {params});
   }
+
+  delete(id: number): Observable<boolean> {
+    return this.http.delete<boolean>(environment.apiUrl + '/' + id);
+  }
 }

@@ -79,4 +79,8 @@ export class HistoryComponent implements AfterViewInit {
   onClickResetFilters(): void {
     this.form.reset();
   }
+
+  onClickDelete(id: number): void {
+    this.historyService.delete(id).subscribe();
+  }
 }
