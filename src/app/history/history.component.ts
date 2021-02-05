@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Component, AfterViewInit} from '@angular/core';
-import {merge, of as observableOf} from 'rxjs';
+import {merge, of as observableOf, Subject} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {History} from '../models/history.model';
 import {HistoryService} from '../services/history.service';
@@ -13,15 +13,15 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class HistoryComponent implements AfterViewInit {
   form = new FormGroup({
-    publicationTypes: new FormControl(),
-    termTypes: new FormControl(),
-    reportGroups: new FormControl(),
-    reportStates: new FormControl(),
-    reportFormats: new FormControl(),
-    outputNumber: new FormControl(),
+    publicationTypes: new FormControl(''),
+    termTypes: new FormControl(''),
+    reportGroups: new FormControl(''),
+    reportStates: new FormControl(''),
+    reportFormats: new FormControl(''),
+    outputNumber: new FormControl(''),
     outputDate: new FormGroup({
-      start: new FormControl(),
-      end: new FormControl()
+      start: new FormControl(''),
+      end: new FormControl('')
     })
   });
 
@@ -43,12 +43,13 @@ export class HistoryComponent implements AfterViewInit {
   data: History[] = [];
   resultsLength = 0;
   isLoadingResults = true;
+  deleteSubject = new Subject<void>()
 
   constructor(private http: HttpClient, private historyService: HistoryService) {
   }
 
   ngAfterViewInit(): void {
-    merge(this.form.valueChanges)
+    merge(this.form.valueChanges, this.deleteSubject)
       .pipe(
         startWith({}),
         switchMap(() => {
@@ -81,6 +82,8 @@ export class HistoryComponent implements AfterViewInit {
   }
 
   onClickDelete(id: number): void {
-    this.historyService.delete(id).subscribe();
+    this.historyService.delete(id).subscribe(() => {
+      this.deleteSubject.next();
+    });
   }
 }

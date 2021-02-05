@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: '/assets/data/test_data.json'
+  apiUrl: 'http://localhost:3000/history'
 };
 
 /*
