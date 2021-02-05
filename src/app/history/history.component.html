@@ -1,0 +1,113 @@
+<div class="example-container mat-elevation-z8">
+  <div *ngIf="isLoadingResults" class="example-loading-shade">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div class="example-table-container">
+
+    <table mat-table [formGroup]="form" [dataSource]="data" class="example-table">
+
+      <ng-container matColumnDef="publicationType">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <mat-label>Тип публікації</mat-label>
+            <mat-select formControlName="publicationTypes" multiple>
+              <mat-option *ngFor="let item of publicationTypes" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.publicationType}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="termType">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <mat-label>Періодичність</mat-label>
+            <mat-select formControlName="termTypes" multiple>
+              <mat-option *ngFor="let item of termTypes" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.termType}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="reportGroup">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <mat-label>Категорія суб'єкта</mat-label>
+            <mat-select formControlName="reportGroups" multiple>
+              <mat-option *ngFor="let item of reportGroups" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.reportGroup}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="reportState">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <mat-label>Статус</mat-label>
+            <mat-select formControlName="reportStates" multiple>
+              <mat-option *ngFor="let item of reportStates" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.reportState}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="reportFormat">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <mat-label>Тип файлу</mat-label>
+            <mat-select formControlName="reportFormats" multiple>
+              <mat-option *ngFor="let item of reportFormats" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.reportFormat}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="outputDate">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <mat-label>Вихідна дата документу</mat-label>
+            <mat-date-range-input formGroupName="outputDate" [rangePicker]="picker">
+              <input matStartDate formControlName="start" placeholder="Start date">
+              <input matEndDate formControlName="end" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.outputDate.date | date}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="outputNumber">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field class="example-ripple-form-field">
+            <input matInput formControlName="outputNumber" type="text" placeholder="Вихідний номер документу">
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.outputNumber}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>
+          <button mat-raised-button color="warn" (click)="onClickResetFilters()">
+            {{'скинути' | uppercase}}
+          </button>
+        </th>
+
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="warn"
+                  (click)="onClickDelete(row.idReport)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
