@@ -14,14 +14,14 @@ export class HistoryService {
   getList(filters: Filters): Observable<History[]> {
     let params = new HttpParams();
     if (filters.publicationTypes && filters.publicationTypes.length > 0){
-      params = params.append('publicationType', filters.publicationTypes.join(','));
+      params = params.append('publicationTypes', filters.publicationTypes.join(','));
     }
     if (filters.termTypes && filters.termTypes.length > 0){
-      params = params.append('termType', filters.termTypes.join(','));
+      params = params.append('termTypes', filters.termTypes.join(','));
     }
 
     if (filters.reportGroups && filters.reportGroups.length > 0){
-      params = params.append('reportGroup', filters.reportGroups.join(','));
+      params = params.append('reportGroups', filters.reportGroups.join(','));
     }
 
     if (filters.reportStates && filters.reportStates.length > 0){
