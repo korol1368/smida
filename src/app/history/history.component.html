@@ -93,7 +93,7 @@
 
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>
-          <button mat-raised-button color="warn">
+          <button mat-raised-button color="warn" (click)="onClickResetFilters()">
             {{'скинути' | uppercase}}
           </button>
         </th>

@@ -75,4 +75,8 @@ export class HistoryComponent implements AfterViewInit {
       this.data = data;
     })
   }
+
+  onClickResetFilters(): void {
+    this.form.reset();
+  }
 }
